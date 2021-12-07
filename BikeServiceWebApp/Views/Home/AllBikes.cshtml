@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BikeServiceWebApp.Models.Company>
+
+@{
+    ViewData["Title"] = "AllCars";
+}
+
+<div class="container">
+
+    <div class="text-center">
+        <h1 class="my-font display-4">Available Service For Listed Companies</h1>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12 mb-3">
+                <h1>
+                    <img src="~/companies/@item.CompanyID@item.ExtName" alt="" class="img-fluid">
+                    @item.CompanyName
+                </h1>
+                @if (item.BikeModels.Count > 0)
+                {
+            <div class="row">
+                @foreach (var car in item.BikeModels)
+                {
+
+                    <div class="col-md-3 mb-3">
+                        <div class="card w-100 shadow col-md-12">
+                            <center>
+                                <img src="~/models/@car.BikeModelID@item.ExtName" alt="" style="width:100%;height:200px">
+                            </center>
+                            <div class="card-body">
+                                <h5 class="card-text text-center">
+                                    @car.BikeModelName 
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+                }
+            </div>
+        }
+    </div>
+</div>
